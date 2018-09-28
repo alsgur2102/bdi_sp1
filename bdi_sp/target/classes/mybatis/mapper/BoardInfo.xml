@@ -3,7 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="SQL.BOARDINFO">
-  <select id="selectBoardInfo" resultType="bi">
+  <select id="selectBoardInfo" resultType="bi" parameterType="bi"> 
+    <!-- <![CDATA[]]>로도 할 수 있음. -->
     select * from board_info
-  </select>
-</mapper>
+    where binum &lt;=9
+    <if test="bititle!=null">
+    	and bititle = #{bititle}
+    </if>
+  </select> 
+</mapper> 
